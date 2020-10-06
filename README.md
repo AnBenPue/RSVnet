@@ -1,6 +1,6 @@
 # RSVnet
 
-The RSVnet model combines the PointNet model with the voting and clustering process described in [Rotational Subgroup Voting and Pose Clustering for Robust 3D Object Recognition](http://openaccess.thecvf.com/content_ICCV_2017/papers/Buch_Rotational_Subgroup_Voting_ICCV_2017_paper.pdf).
+This pose estimation method combines the PointNet model with the voting and clustering process described in [Rotational Subgroup Voting and Pose Clustering for Robust 3D Object Recognition](http://openaccess.thecvf.com/content_ICCV_2017/papers/Buch_Rotational_Subgroup_Voting_ICCV_2017_paper.pdf).
 
 This project was part of my master thesis, for a deeper explanation of the pose estimation process, the report can be found [**here**](https://drive.google.com/file/d/19ugY-eDmjGruppoCufYvgZsz8mI4UjDE/view?usp=sharing).
 
