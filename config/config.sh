@@ -7,11 +7,14 @@ sudo apt-get install python3-venv
 # Create necessary folders
 mkdir ../Linemod/ply
 mkdir ../Linemod/pose
-mkdir ../Linemod/object_classification/data
 mkdir ../Linemod/RSVnet/data
 mkdir ../PointNet/object_classification/data
+mkdir ../PointNet/object_classification/data/train
+mkdir ../PointNet/object_classification/data/test
 mkdir ../PointNet/object_classification/models
 mkdir ../PointNet/scene_classification/data
+mkdir ../PointNet/scene_classification/data/train
+mkdir ../PointNet/scene_classification/data/test
 mkdir ../PointNet/scene_classification/models
 mkdir ../RSVnet/data/eval
 mkdir ../RSVnet/data/test

@@ -33,7 +33,6 @@ for it in range(num_of_samples):
     # In order to speed up the process, the scene is cropped to reduce the 
     # amount of points.
     cropped_scene = gtg.cropScene(object_T, scene, radius=200)
-    #--> gtg.visualizeGroundTruth(object_T, cropped_scene)
     # Get the matching points, this is, those points of the scene which
     # have been classified as object points
     sample_data = gtg.getMatches(object_T, 
@@ -42,7 +41,7 @@ for it in range(num_of_samples):
                                     radial_vector_length=radial_vector_length, 
                                     scalar_projection=scalar_projection)
     if sample_data is not None:
-        #--> gtg.visualizeSampleMatchingPoints(sample_data)
+        # gtg.visualizeSampleMatchingPoints(sample_data)
         # Save the generated data every N samples
         gtg.save(f.GTG_RSVNET_G, save_every = 3000)
 

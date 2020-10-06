@@ -29,7 +29,7 @@ class NumpyEncoder(json.JSONEncoder):
 # Configuration parameters
 v = var_RSVnet
 
-class rsvnet_global_model:
+class RSVnet_model:
     """
     This class the RSVnet model used to regress the necessary scalar projection 
     and radial vector length values See:

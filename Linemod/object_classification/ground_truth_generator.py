@@ -60,7 +60,7 @@ class groundTruthGenerator:
         # There are different cad models and not all of them have the same
         # initial orientation, in this case we had to turn it around the z axis
         T_r = R.from_euler('z', 180, degrees=True)
-        object_T.rotate(T_r.as_matrix())
+        object_T.rotate(T_r.as_matrix(), (0,0,0))
         # Apply the ground truth transformation      
         object_T.transform(T)
         return object_T
@@ -101,7 +101,7 @@ class groundTruthGenerator:
             print('ERROR: cropping failed.')
         else:
             # Crop scene point cloud by selecting only the neighboring points 
-            cropped_scene = scene.select_down_sample(idx)
+            cropped_scene = scene.select_by_index(idx)
             return cropped_scene         
     
     def getMatches(self, object, scene):

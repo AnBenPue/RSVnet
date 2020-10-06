@@ -38,12 +38,11 @@ for it in range(num_of_samples):
     # In order to speed up the process, the scene is cropped to reduce the 
     # amount of points.
     cropped_scene = gtg.cropScene(object_T, scene, radius=200)
-    #-->  sgtg.visualizeGroundTruth(object_T, cropped_scene)
+    gtg.visualizeGroundTruth(object_T, cropped_scene)
     # Get the matching points, this is, those points of the scene which
     # have been classified as object points
-    [d_points, d_points_uncentered, d_categories, d_scene_indices] = gtg.getMates(object_T, cropped_scene)
-    #--> gtg.visualizeMatches(object_T, cropped_scene, d_categories, d_scene_indices, num_of_points=3)
-    #--> gtg.visualizeMatches(object_T, cropped_scene.translate([100,100,100]), d_categories, d_scene_indices, num_of_points=3)
+    [d_points, d_points_uncentered, d_categories, d_scene_indices] = gtg.getMatches(object_T, cropped_scene)
+    #gtg.visualizeMatches(object_T, cropped_scene.translate([100,100,100]), d_categories, d_scene_indices, num_of_points=3)
     # Save the generated data every N samples
     gtg.save(f.GTG_OBJECT_SEGMENTATION_DATA, save_every = 1000)
 

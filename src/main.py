@@ -11,7 +11,7 @@ from pointcloud import (applyGroundTruthPoseToObject, cropScene, downsample,
                         fromNumpyArray, icp)
 from PointNet_model import object_classifier, scene_classifier
 from rotational_subgroup_voting import rsv
-from RSVnet_model_global import rsvnet_global_model
+from RSVnet import RSVnet_model
 from seeds_rotation_frames import loadSeedsRotationFrames
 from utilities import buildT, loadT
 from evaluation import evaluation_metrics
@@ -53,7 +53,7 @@ for it in range(len(test_ply)):
     T_gt = loadT(test_T[it])
     #object_T = applyGroundTruthPoseToObject(object, T_gt)
     #scene = cropScene(object_T, scene, radius = 500)
-    #print('INFO: Visualizing the object and scene cloud: ' + test_ply[it])   
+    print('INFO: Visualizing the object and scene cloud: ' + test_ply[it])   
     o3d.visualization.draw_geometries([object, scene])
 
     em.addData(current_sample, 'num_points_original', len(np.asarray(scene.points)))
@@ -87,15 +87,15 @@ for it in range(len(test_ply)):
     print('INFO: Getting the predicted category for each segment')
     scores = scene_class.predict(s_points)
     # print('INFO: Visualizing the segments classified as object')
-    # scene_class.visualizePrediction(s_points_u, scores)
+    scene_class.visualizePrediction(s_points_u, scores)
     print('INFO: From the segments classified as objects, select only the best candidate/s')
     c_indices = scene_class.getCandidates(scores, s_points, sc.NUM_OF_CANDIDATES)
     # Select the candidate data from the segments data
     c_points = s_points[c_indices]
     c_points_u = s_points_u[c_indices]
     c_normals = s_normals[c_indices]
-    # print('INFO: Visualizing the best candidate/s')
-    # scene_class.visualizeBestCandidates(c_points_u)
+    print('INFO: Visualizing the best candidate/s')
+    scene_class.visualizeBestCandidates(c_points_u)
     # Reshape the candidate/s data in order to merge everything into one sample
     new_shape = (sc.NUM_OF_CANDIDATES*sc.NUM_OF_POINTS, sc.NUM_OF_DIMENSIONS)
     c_points = np.reshape(c_points, new_shape)
@@ -239,7 +239,7 @@ for it in range(len(test_ply)):
     end = time.time()
     print('\t TIME: ' + str(end - start))   
 
-    #RSVnet.visualizeBestCandidates(scene, object, t_candidates, R_candidates)
+    RSVnet.visualizeBestCandidates(scene, object, t_candidates, R_candidates)
 
     ''' -------------------------------- ICP ---------------------------------- '''
     start = time.time()
